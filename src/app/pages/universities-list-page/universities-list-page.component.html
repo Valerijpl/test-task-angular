@@ -4,7 +4,14 @@
 
     <div class="universities-list-search-input-section">
 
-      <input class="universities-list-search-input" type="text" placeholder="Please enter country here" [(ngModel)]="country" (keydown.enter)="getUniversities()"/>
+      <input (keyup)="filterCountries($event.target.value)" matInput [matAutocomplete]="auto" class="universities-list-search-input" type="text" placeholder="Please enter country" [(ngModel)]="country" (keydown.enter)="getUniversities()"/>
+
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getUniversities()">
+        <mat-option *ngFor="let option of suggestedResults" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+
       <i class="universities-list-search-icon fa fa-search smartphone-hidden"></i>
 
     </div>

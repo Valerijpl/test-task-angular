@@ -11,6 +11,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatRippleModule } from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {CdkDetailRowDirective} from './directives/cdk-detail-row.directive';
 
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { ThemeService } from './services/theme/theme.service';
     DragDropModule,
     FormsModule,
     MatRippleModule,
+    MatAutocompleteModule,
     MatTableModule,
     MatSortModule
   ],

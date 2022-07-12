@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { UniversityService } from '../../services/university/university.service';
 import { takeUntil } from 'rxjs/operators';
-import { ReplaySubject, Subscription } from 'rxjs';
+import { ReplaySubject, Subscription, Observable } from 'rxjs';
 import { ThemeService } from '../../services/theme/theme.service';
 import { UniversitiesTableComponent } from '../../components/universities-table/universities-table.component';
 import { PeriodicElement } from '../../models/periodic-element';
+
+import * as countries from "countries-list";
 
 @Component({
   selector: 'app-universities-list-page',
@@ -18,6 +20,10 @@ export class UniversitiesListPageComponent implements OnInit, OnDestroy {
   public country: string = '';
 
   public themeIsDark: boolean = false;
+
+  public suggestedResults: string[] = [];
+
+  public countries: string[] = [];
 
   private subscription: Subscription;
 
@@ -34,6 +40,7 @@ export class UniversitiesListPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.getCountries();
   }
 
   ngOnDestroy() {
@@ -41,10 +48,28 @@ export class UniversitiesListPageComponent implements OnInit, OnDestroy {
     this.destroyed$.complete();
   }
 
+  getCountries(){
+    for (const [key, value] of Object.entries(countries.countries)) {
+      this.countries.push(value.name);
+    }
+  }
+
   getUniversities(){
-    this.universityService.getUniversities(this.country).pipe(takeUntil(this.destroyed$)).subscribe(result => {
+    this.universityService.getUniversities(this.country.toLowerCase()).pipe(takeUntil(this.destroyed$)).subscribe(result => {
       this.universitiesTableComponent.dataSource.data = result;
     });
+  }
+
+  filterCountries(value: string){
+    this.suggestedResults = [];
+
+    if (value.length > 1){
+      this.countries.forEach(country => {
+        if (country.toLowerCase().includes(value.toLowerCase())){
+          this.suggestedResults.push(country);
+        }
+      });
+    }
   }
 
   changeTheme(event: boolean){
