@@ -1,0 +1,185 @@
+.demo-row-is-clicked {
+  color: blue !important;
+}
+
+.universities-table {
+  position: relative;
+  width: 80%;
+  margin-left: 10%;
+  padding-bottom: 20px;
+}
+
+.universities-table-filter-input {
+  margin: 20px 0px;
+}
+
+.sticky-icon {
+  top: 110px;
+  font-size: 12px;
+  right: 20px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.mobile-visible {
+  display: none;
+}
+
+.sticky-icon-dark {
+  color: #fff;
+}
+
+.sticky-icon-light {
+  color: #3b3d42;
+}
+
+.detail-row {
+  overflow: hidden;
+  width: 100%;
+}
+
+.element-sticky {
+  position: sticky;
+  top: 0;
+}
+
+.detail-row-light {
+  background-color: #fff;
+  color: #12151A;
+  border-bottom: 1px solid #12151A;
+}
+
+.detail-row-dark {
+  background-color: #12151A;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.empty-message {
+  text-align: center;
+  color: rgba(255,255,255,.7);
+  width: calc(100% - 40px);
+  padding: 0px 20px;
+}
+
+.table-row {
+  width: 100%;
+  z-index: 1;
+}
+
+.description-text {
+  width: calc(100% - 40px);
+  padding: 10px 20px;
+}
+
+table.mat-table {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    td {
+      width: 100%;
+    }
+    th {
+      width: 100%;
+    }
+}
+
+::ng-deep {
+  .mat-elevation-z8 {
+    box-shadow: none;
+  }
+
+  td {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #fff;
+  }
+
+  .row-dark {
+    background-color: #12151A;
+    th {
+      color: #fff;
+    }
+  }
+
+  .row-light {
+    background-color: #fff;
+    th {
+      color: #12151A;
+      border-bottom: 1px solid #12151A;
+      .mat-sort-header-arrow {
+        color: #12151A;
+      }
+    }
+    td, .empty-message {
+      color: #12151A;
+      border-bottom: 1px solid #12151A;
+    }
+  }
+
+  .table-footer-dark {
+    background-color: #12151A;
+    color: rgba(255,255,255,.7);
+  }
+
+  .strong {
+    font-weight: 800;
+  }
+
+  .table-footer-light {
+    background-color: #fff;
+    color: #12151A;
+    .mat-paginator-outer-container .mat-paginator-container .mat-paginator-range-actions button {
+      background-color: #fff;
+      color: #12151A;
+    }
+    .mat-select-arrow {
+      color: #12151A;
+    }
+
+    .mat-select-value-text span {
+      color: #12151A;
+    }
+
+    .mat-select-panel {
+      background-color: #fff;
+      .mat-option {
+        color: #12151A;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px){
+  .mobile-hidden {
+    display: none;
+  }
+
+  .mobile-visible {
+    display: block;
+  }
+
+  ::ng-deep {
+    .mat-paginator-container {
+      justify-content: space-evenly !important;
+      margin-top: 20px;
+    }
+  }
+
+  .universities-table {
+    width: calc(100% - 40px);
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 1920px){
+  .universities-table {
+    width: 60%;
+    margin-left: 20%;
+  }
+}

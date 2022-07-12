@@ -1,0 +1,18 @@
+<div class="universities-list-page universities-list-page-{{ themeIsDark ? 'dark' : 'light'}}">
+
+  <div class="universities-list-search-section">
+
+    <div class="universities-list-search-input-section">
+
+      <input class="universities-list-search-input" type="text" placeholder="Please enter country here" [(ngModel)]="country" (keydown.enter)="getUniversities()"/>
+      <i class="universities-list-search-icon fa fa-search smartphone-hidden"></i>
+
+    </div>
+
+    <button (click)="getUniversities()" class="universities-list-search-button smartphone-hidden">Search</button>
+
+    <button (click)="getUniversities()" class="universities-list-search-button smartphone-visible"><i class="fa fa-search"></i></button>
+  </div>
+
+  <app-universities-table></app-universities-table>
+</div>

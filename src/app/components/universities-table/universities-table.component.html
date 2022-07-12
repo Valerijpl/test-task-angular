@@ -1,0 +1,71 @@
+<div class="universities-table">
+
+  <input class="universities-table-filter-input" type="text" placeholder="Filter universities by name" (keyup)="applyFilter($event.target.value)"/>
+
+  <div class="mat-elevation-z8" id="table-container">
+
+    <table mat-table [dataSource]="dataSource" cdkDropList [cdkDropListData]="dataSource.data" (cdkDropListDropped)="drop($event)" class="mat-elevation-z8" matSort>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="alpha_two_code" class="mobile-hidden">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Alpha Two Code </th>
+        <td mat-cell *matCellDef="let element"> {{element.alpha_two_code}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="domains" class="mobile-hidden">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Domain </th>
+        <td mat-cell *matCellDef="let element"> {{element.domains[0]}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="web_pages">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Web page </th>
+        <td mat-cell *matCellDef="let element"> {{element.web_pages[0]}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nodata">
+        <td mat-footer-row *matFooterCellDef [colSpan]="displayedColumns.length" class="empty-message">There is no universities according to country search</td>
+      </ng-container>
+
+      <tr [ngClass]="themeIsDark ? 'row-dark' : 'row-light'" class="table-row {{ columnsSticky ? 'element-sticky' : ''}}" mat-header-row *matHeaderRowDef="displayedColumns">
+      </tr>
+
+      <tr [ngClass]="themeIsDark ? 'row-dark': 'row-light'" mat-footer-row [hidden]="dataSource.data.length >0" *matFooterRowDef="['nodata']"></tr>
+
+      <tr [ngClass]="themeIsDark ? 'row-dark' : 'row-light'" class="table-row" mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag [cdkDragData]="row" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl"></tr>
+    </table>
+
+    <mat-paginator [ngClass]="themeIsDark ? 'table-footer-dark' : 'table-footer-light'" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+
+  </div>
+
+  <i class="fa fa-map-pin sticky-icon {{ themeIsDark ? 'sticky-icon-dark' : 'sticky-icon-light'}}" [ngClass]="columnsSticky ? 'element-icon-sticky' : ''" (click)="adjustStickyStatus()"></i>
+
+</div>
+
+<ng-template #tpl let-element>
+	<div class="mat-row detail-row detail-row-{{ themeIsDark ? 'dark' : 'light'}}" [style.width.px]="initTableWidth()">
+
+    <p class="description-text strong mobile-visible">Alpha Two Code</p>
+
+    <p class="description-text mobile-visible">{{ element.alpha_two_code }}</p>
+
+    <p class="description-text strong mobile-visible">Domain</p>
+
+    <p class="description-text mobile-visible">{{ element.domains[0] }}</p>
+
+    <p class="description-text strong mobile-visible">Web page</p>
+
+    <p class="description-text mobile-visible">{{ element.web_pages[0] }}</p>
+
+		<p class="description-text strong">Description</p>
+
+    <p class="description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+	</div>
+</ng-template>

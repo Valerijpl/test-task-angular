@@ -1,0 +1,82 @@
+.universities-list-page {
+  min-height: calc(100% - 180px);
+}
+
+.universities-list-page-dark {
+  background-color: #12151A;
+}
+
+.universities-list-page-light {
+  background-color: #fff;
+}
+
+.universities-list-search-section {
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.universities-list-search-input-section {
+  position: relative;
+  width: calc(100% - 145px);
+}
+
+.universities-list-search-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.smartphone-visible {
+  display: none;
+}
+
+.universities-list-search-button {
+  font-size: 16px;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: 600;
+  background-color: #00A82D;
+  box-shadow: 0px 4px 11px 0px rgb(27 27 27 / 50%);
+  border-radius: 50px 50px 50px 50px;
+  padding: 15px 40px;
+  border: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 568px){
+  .universities-list-search-button {
+    padding: 15px 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .smartphone-hidden {
+    display: none;
+  }
+
+  .smartphone-visible {
+    display: inline-block;
+  }
+
+  .universities-list-search-input-section {
+    width: calc(100% - 56px);
+  }
+
+  .universities-list-search-section {
+    width: calc(100% - 40px);
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 1920px){
+  .universities-list-search-section {
+    width: 60%;
+    margin-left: 20%;
+  }
+}
